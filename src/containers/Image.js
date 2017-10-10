@@ -13,8 +13,9 @@ const ImageC = (props) => (
 const mapStateToProps = (state, ownProps) => {
   let image = state.entities.images[state.pagination.image.id];
   let {imgWidth: canvasWidth, imgHeight: canvasHeight} = state.ui.stage;
-  let scale = 1 / state.ui.scaleBox.w;
-  return {...image, ...ownProps, canvasWidth, canvasHeight, scale};
+  let scaleBox = state.ui.scaleBox;
+  let scale = 1 / scaleBox.w;
+  return {...image, ...ownProps, canvasWidth, canvasHeight, scale, scaleBox};
 };
 
 export default connect(mapStateToProps)(ImageC);

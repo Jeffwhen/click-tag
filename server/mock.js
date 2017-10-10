@@ -54,7 +54,7 @@ let respTemp = {
 };
 let dataIndex = 0;
 let data = [
-  { url: 'http://pic.adkalava.com/img006/327/a8af0a2e1ad2d9af.jpg',
+  { url: 'http://img.adkalava.com/img006/327/a8af0a2e1ad2d9af.jpg',
     box: 
          { xmax: 0.43279600140681,
            uid: 8287479,
@@ -64,7 +64,7 @@ let data = [
     imgId: '12154945112431057327',
     width: 1600,
     height: 1200 },
-  { url: 'http://pic.adkalava.com/img006/178/10475a032ff8ddf2.jpg',
+  { url: 'http://img.adkalava.com/img006/178/10475a032ff8ddf2.jpg',
     box: 
          { xmax: 0.46590549998359,
            uid: 8286803,
@@ -74,7 +74,7 @@ let data = [
     imgId: '1173005197689544178',
     width: 1600,
     height: 1200 },
-  { url: 'http://pic.adkalava.com/img006/762/d44e27b14839539a.jpg',
+  { url: 'http://img.adkalava.com/img006/762/d44e27b14839539a.jpg',
     box: 
          { xmax: 0.82791598341921,
            uid: 8284982,
@@ -84,7 +84,7 @@ let data = [
     imgId: '15298208626598564762',
     width: 2448,
     height: 2048 },
-  { url: 'http://pic.adkalava.com/img006/050/680b9ac2f74e6b0a.jpg',
+  { url: 'http://img.adkalava.com/img006/050/680b9ac2f74e6b0a.jpg',
     box: 
          { xmax: 0.61161250423396,
            uid: 8287110,
@@ -94,7 +94,7 @@ let data = [
     imgId: '7497256166851767050',
     width: 1600,
     height: 1200 },
-  { url: 'http://pic.adkalava.com/img006/410/701b19a03b880d8a.jpg',
+  { url: 'http://img.adkalava.com/img006/410/701b19a03b880d8a.jpg',
     box: 
          { xmax: 0.54998125,
            uid: 8286705,
@@ -104,7 +104,7 @@ let data = [
     imgId: '8078078532603350410',
     width: 1600,
     height: 1200 },
-  { url: 'http://pic.adkalava.com/img006/585/81b805c6b375f341.jpg',
+  { url: 'http://img.adkalava.com/img006/585/81b805c6b375f341.jpg',
     box: 
          { xmax: 0.487440625,
            uid: 8286248,
@@ -114,7 +114,7 @@ let data = [
     imgId: '9347227377579979585',
     width: 1600,
     height: 1200 },
-  { url: 'http://pic.adkalava.com/img006/519/be1e656c9d4773f7.jpg',
+  { url: 'http://img.adkalava.com/img006/519/be1e656c9d4773f7.jpg',
     box: 
          { xmax: 0.63610290517628,
            uid: 8286206,
@@ -124,7 +124,7 @@ let data = [
     imgId: '13699498633677206519',
     width: 1600,
     height: 1200 },
-  { url: 'http://pic.adkalava.com/img006/059/b58415e3729ccc63.jpg',
+  { url: 'http://img.adkalava.com/img006/059/b58415e3729ccc63.jpg',
     box: 
          { xmax: 0.33379622708306,
            uid: 8286301,
@@ -134,7 +134,7 @@ let data = [
     imgId: '13079603284415401059',
     width: 1600,
     height: 1200 },
-  { url: 'http://pic.adkalava.com/img006/604/2447b64c3664b8ec.jpg',
+  { url: 'http://img.adkalava.com/img006/604/2447b64c3664b8ec.jpg',
     box: 
          { xmax: 0.43669599252896,
            uid: 8285126,
@@ -144,7 +144,7 @@ let data = [
     imgId: '2614258547158202604',
     width: 1600,
     height: 1200 },
-  { url: 'http://pic.adkalava.com/img006/284/f926f377e4fd48d4.jpg',
+  { url: 'http://img.adkalava.com/img006/284/f926f377e4fd48d4.jpg',
     box: 
          { xmax: 0.44001038238067,
            uid: 8286560,
@@ -154,7 +154,7 @@ let data = [
     imgId: '17953304660827523284',
     width: 1600,
     height: 1200 },
-  { url: 'http://pic.adkalava.com/img006/148/90d42b2beb081bec.jpg',
+  { url: 'http://img.adkalava.com/img006/148/90d42b2beb081bec.jpg',
     box: 
          { xmax: 0.53821516883899,
            uid: 8287655,
@@ -164,7 +164,7 @@ let data = [
     imgId: '10436013704151047148',
     width: 1600,
     height: 1200 },
-  { url: 'http://pic.adkalava.com/img006/873/39430aad24d957f1.jpg',
+  { url: 'http://img.adkalava.com/img006/873/39430aad24d957f1.jpg',
     box: 
          { xmax: 0.56364389763867,
            uid: 8287442,
@@ -174,7 +174,7 @@ let data = [
     imgId: '4126153422365349873',
     width: 1600,
     height: 1200 },
-  { url: 'http://pic.adkalava.com/img006/807/89252ebbef06fb9f.jpg',
+  { url: 'http://img.adkalava.com/img006/807/89252ebbef06fb9f.jpg',
     box: 
          { xmax: 0.57099300893524,
            uid: 8287126,
