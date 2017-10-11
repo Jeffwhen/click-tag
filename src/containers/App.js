@@ -1,22 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+import pick from 'lodash/pick';
 
 import Stage from './Stage';
 import Monitor from './Monitor';
 import Paginate from './Paginate';
 import Submit from './Submit';
+import Spinner from '../components/Spinner';
 import {loadImage, resetErrorMessage} from '../actions';
 import * as ActionTypes from '../actions';
+
+import './App.css';
 
 class App extends React.Component {
   static propTypes = {
     index: PropTypes.number.isRequired,
     storeIndex: PropTypes.number,
     total: PropTypes.number,
-    errorMessage: PropTypes.string,
+    errorMessage: PropTypes.object,
     resetErrorMessage: PropTypes.func.isRequired,
-    loadData: PropTypes.func.isRequired
+    canvasWidth: PropTypes.number.isRequired,
+    canvasHeight: PropTypes.number.isRequired,
+    loadData: PropTypes.func.isRequired,
+    isFetching: PropTypes.bool
   }
   handlePageChange = index => {
     this.props.history.push(`/${index}`);
@@ -84,14 +91,28 @@ class App extends React.Component {
       </p>
     )
   }
-  render() {
+  renderMain() {
+    if (!this.props.total) {
+      return null;
+    }
+    let spinProps = pick(this.props, ['canvasWidth', 'canvasHeight']);
     return (
       <div>
-        {this.renderErrorMessage()}
-        <Stage />
+        <div className="click-tag-stage-container">
+          <Stage />
+          {this.props.isFetching ? <Spinner {...spinProps} /> : null}
+        </div>
         <Monitor />
         <Paginate onChange={this.handlePageChange} />
         <Submit onChange={this.handlePageChange} />
+      </div>
+    );
+  }
+  render() {
+    return (
+      <div className="click-tag-container">
+        {this.renderErrorMessage()}
+        {this.renderMain()}
       </div>
     );
   }
@@ -99,14 +120,16 @@ class App extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
   let paginate = state.pagination.image;
+  const {imgWidth: canvasWidth, imgHeight: canvasHeight} = state.ui.stage;
   let newProps = {
     ...ownProps,
+    canvasWidth, canvasHeight,
     errorMessage: state.errorMessage,
     storeIndex: paginate && paginate.index
   };
   if (state.pagination.image) {
-    let {total} = state.pagination.image;
-    return {...newProps, total};
+    let {total, isFetching} = state.pagination.image;
+    return {...newProps, total, isFetching};
   } else {
     return newProps;
   }
@@ -114,7 +137,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   index: parseInt(ownProps.match.params.index),
-  loadData: index => dispatch(loadImage(index)),
+  loadData: index => dispatch(loadImage({index})),
   resetErrorMessage: () => dispatch(resetErrorMessage()),
   ...ownProps
 });

@@ -31,7 +31,11 @@ app.use(function (req, res, next) {
 app.get('/image', (req, res) => {
   res.json(genImage());
 });
-app.post('/image', (req, res) => {
+app.post('/image', (...args) => {
+  setTimeout(() => handler(...args), 100);
+});
+
+const handler = (req, res) => {
   if (req.body.points) {
     console.dir(req.body);
     if (req.body.index + 1 < data.length) {
@@ -42,7 +46,7 @@ app.post('/image', (req, res) => {
   } else {
     res.json(genImage(req.body.index));
   }
-});
+}
 app.listen(port, function () {
   console.log(`api server @${port}`);
 });

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import pick from 'lodash/pick';
 
-import {fetchImage, setErrorMessage} from '../actions';
+import {loadImage, setErrorMessage} from '../actions';
 
 class Submit extends React.Component {
   static propTypes = {
@@ -29,7 +29,6 @@ class Submit extends React.Component {
     let objPoints = {};
     points.forEach(p => {objPoints[p.ikey] = pick(p, ['x', 'y']);});
     submit({index, points: objPoints});
-    console.log(this.props.index);
   }
   render() {
     let props = {
@@ -51,7 +50,7 @@ const mapStateToProps = (state, ownProps) => {
 };
 const mapDispatchToProps = (dispatch, ownProps) => ({
   ...ownProps,
-  submit: params => dispatch(fetchImage(params)),
+  submit: params => dispatch(loadImage(params)),
   error: e => dispatch(setErrorMessage(e))
 });
 

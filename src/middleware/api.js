@@ -30,6 +30,8 @@ const postApi = (params, schema) => {
 const pointSchema = new schema.Entity('points', {}, {
   idAttribute: entity => entity.ikey,
   processStrategy: entity => {
+    entity.x = entity.x || null;
+    entity.y = entity.y || null;
     entity.ikey = entity.key;
     delete entity.key;
     return entity;

@@ -4,7 +4,7 @@ export const IMAGE_REQUEST = 'IMAGE_REQUEST';
 export const IMAGE_SUCCESS = 'IMAGE_SUCCESS';
 export const IMAGE_FAILURE = 'IMAGE_FAILURE';
 
-export const fetchImage = params => ({
+const fetchImage = params => ({
   [CALL_API]: {
     types: [IMAGE_REQUEST, IMAGE_SUCCESS, IMAGE_FAILURE],
     params,
@@ -12,8 +12,13 @@ export const fetchImage = params => ({
   }
 });
 
-export const loadImage = (index) => (dispatch, getState) => {
-  return dispatch(fetchImage({index}));
+export const loadImage = (params) => (dispatch, getState) => {
+  let {pagination} = getState();
+  let isFetching = pagination.image && pagination.image.isFetching;
+  if (isFetching) {
+    return;
+  }
+  return dispatch(fetchImage(params));
 };
 
 export const SET_ERROR_MESSAGE = 'SET_ERROR_MESSAGE';

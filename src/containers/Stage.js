@@ -32,7 +32,8 @@ ImageStage.propTypes = {
 };
 
 const mapStateToProps = (state, ownProps) => {
-  let image = state.pagination.image && state.pagination.image.id;
+  let imagePaginate = state.pagination.image;
+  let {id: image} = imagePaginate || {};
   if (!image) {
     return ownProps;
   }
