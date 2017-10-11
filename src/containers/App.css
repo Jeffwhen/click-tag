@@ -1,5 +1,27 @@
+div.click-tag-container {
+    text-align: center;
+}
+
+div.click-tag-monitor {
+    text-align: left;
+}
 
 div.click-tag-stage-container {
     position: relative;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+div.click-tag-monitor {
+    display: inline-block;
+    margin: 10px 18px;
+    vertical-align: middle;
+}
+
+div.click-tag-paginate * {
+    vertical-align: center;
+}
+
+form.click-tag-paginate {
     display: inline-block;
 }

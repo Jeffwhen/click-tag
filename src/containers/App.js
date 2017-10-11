@@ -98,11 +98,13 @@ class App extends React.Component {
     let spinProps = pick(this.props, ['canvasWidth', 'canvasHeight']);
     return (
       <div>
-        <div className="click-tag-stage-container">
-          <Stage />
-          {this.props.isFetching ? <Spinner {...spinProps} /> : null}
+        <div>
+          <div className="click-tag-stage-container">
+            <Stage />
+            {this.props.isFetching ? <Spinner {...spinProps} /> : null}
+          </div>
+          <Monitor />
         </div>
-        <Monitor />
         <Paginate onChange={this.handlePageChange} />
         <Submit onChange={this.handlePageChange} />
       </div>
