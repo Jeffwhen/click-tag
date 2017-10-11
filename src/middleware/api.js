@@ -10,8 +10,8 @@ const headers = {
 
 const Endpoint = '/image';
 const ExtraParams = {};
-const postApi = ({index}, schema) => {
-  let params = JSON.stringify(Object.assign({index}, ExtraParams));
+const postApi = (params, schema) => {
+  params = JSON.stringify(Object.assign(params, ExtraParams));
   return fetch(Endpoint, {
     method: 'POST', body: params, credentials: 'same-origin',
     headers
@@ -22,7 +22,7 @@ const postApi = ({index}, schema) => {
       return Promise.reject(json);
     }
 
-    let {total} = json;
+    let {total, index} = json;
     return {...normalize(json, schema), total, index};
   });
 };
@@ -95,7 +95,8 @@ export default store => next => action => {
   return postApi(params, schema).then(
     response => next(actionWith({response, type: successType})),
     error => next(actionWith({
-      type: failureType, error: error.message || 'Something bad happened'
+      type: failureType, error: error.msg || 'Something bad happened',
+      level: error.errcode > 0 ? 'info' : 'error'
     }))
   );
 };

@@ -4,7 +4,7 @@ export const IMAGE_REQUEST = 'IMAGE_REQUEST';
 export const IMAGE_SUCCESS = 'IMAGE_SUCCESS';
 export const IMAGE_FAILURE = 'IMAGE_FAILURE';
 
-const fetchImage = params => ({
+export const fetchImage = params => ({
   [CALL_API]: {
     types: [IMAGE_REQUEST, IMAGE_SUCCESS, IMAGE_FAILURE],
     params,
@@ -17,6 +17,9 @@ export const loadImage = (index) => (dispatch, getState) => {
 };
 
 export const SET_ERROR_MESSAGE = 'SET_ERROR_MESSAGE';
+export const setErrorMessage = (error, level) => ({
+  type: SET_ERROR_MESSAGE, error, level: level || 'error'
+});
 export const RESET_ERROR_MESSAGE = 'RESET_ERROR_MESSAGE';
 export const resetErrorMessage = () => ({
   type: RESET_ERROR_MESSAGE

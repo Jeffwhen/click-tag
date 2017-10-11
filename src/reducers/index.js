@@ -98,12 +98,12 @@ const scaleBox = (state={x: 0, y: 0, w: 1, h: 1}, action) => {
 const ui = combineReducers({stage, scaleBox});
 
 const errorMessage = (state=null, action) => {
-  const {type, error} = action;
+  const {type, error, level} = action;
 
   if (type === ActionTypes.RESET_ERROR_MESSAGE) {
     return null;
   } else if (error) {
-    return error;
+    return {error, level};
   }
 
   return state;

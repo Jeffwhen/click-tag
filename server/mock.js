@@ -32,7 +32,16 @@ app.get('/image', (req, res) => {
   res.json(genImage());
 });
 app.post('/image', (req, res) => {
-  res.json(genImage(req.body.index));
+  if (req.body.points) {
+    console.dir(req.body);
+    if (req.body.index + 1 < data.length) {
+      res.json(genImage(req.body.index + 1));
+    } else {
+      res.json({errcode: 1, msg: 'the end'});
+    }
+  } else {
+    res.json(genImage(req.body.index));
+  }
 });
 app.listen(port, function () {
   console.log(`api server @${port}`);
@@ -46,7 +55,7 @@ function genImage(index) {
     {name: '左下', key: 'left-bottom'},
     {name: '右下', key: 'right-bottom'}
   ];
-  return {...img, ...respTemp, points, total: data.length};
+  return {...img, ...respTemp, points, total: data.length, index};
 }
 let respTemp = {
   errcode: 0,

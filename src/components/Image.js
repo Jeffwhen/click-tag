@@ -69,7 +69,6 @@ class BackImage extends React.Component {
       stroke: 'red',
       strokeWidth: strokeWidth / scale
     };
-    console.log(imgProps, rectProps);
     return (
       <Group>
         <Image image={this.state.image} {...imgProps} />

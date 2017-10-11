@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 import Paginate from '../components/Paginate';
-import {loadImage} from '../actions';
+import {setErrorMessage} from '../actions';
 
 const mapStateToProps = (state, ownProps) => {
   if (state.pagination.image) {
@@ -12,4 +12,9 @@ const mapStateToProps = (state, ownProps) => {
   return ownProps;
 };
 
-export default connect(mapStateToProps)(Paginate);
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  ...ownProps,
+  error: e => dispatch(setErrorMessage(e))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Paginate);
