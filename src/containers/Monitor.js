@@ -35,7 +35,8 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  selPoint: ikey => dispatch(selPoint(ikey))
+  selPoint: ikey => dispatch(selPoint(ikey)),
+  ...ownProps
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Monitor);

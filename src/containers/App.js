@@ -9,7 +9,6 @@ import Paginate from './Paginate';
 import Submit from './Submit';
 import Spinner from '../components/Spinner';
 import {loadImage, resetErrorMessage} from '../actions';
-import * as ActionTypes from '../actions';
 
 import './App.css';
 
@@ -70,7 +69,7 @@ class App extends React.Component {
   renderErrorMessage() {
     const {errorMessage} = this.props;
     if (!errorMessage) {
-      return null
+      return null;
     }
     const colorMap = {
       info: 'green',
@@ -89,7 +88,7 @@ class App extends React.Component {
           Dismiss
         </button>
       </p>
-    )
+    );
   }
   renderMain() {
     if (!this.props.total) {
@@ -138,7 +137,7 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  index: parseInt(ownProps.match.params.index),
+  index: parseInt(ownProps.match.params.index, 10),
   loadData: index => dispatch(loadImage({index})),
   resetErrorMessage: () => dispatch(resetErrorMessage()),
   ...ownProps

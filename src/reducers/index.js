@@ -12,7 +12,10 @@ const entities = (state={images: {}}, action) => {
   return state;
 };
 
-const stageDefault = {maxWidth: 600, maxHeight: 600};
+const stageDefault = {
+  maxWidth: 600, maxHeight: 600,
+  imgWidth: 600, imgHeight: 600
+};
 const stage = (state=stageDefault, action) => {
   const scaleImage = ({imgWidth, imgHeight, maxWidth, maxHeight}) => {
     let maxRatio = maxWidth / maxHeight;

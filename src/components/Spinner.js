@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Image, Layer} from 'react-konva';
 import gif from './loading.gif';
 
 class Spinner extends React.Component {
@@ -10,7 +9,15 @@ class Spinner extends React.Component {
   }
   state = {show: false}
   componentDidMount() {
-    setTimeout(() => this.setState({show: true}), 300);
+    this.timmer = setTimeout(() => {
+      this.setState({show: true});
+      this.timmer = null;
+    }, 300);
+  }
+  componentWillUnmount() {
+    if (typeof this.timmer !== 'undefined') {
+      clearTimeout(this.timmer);
+    }
   }
   render() {
     const {canvasWidth, canvasHeight} = this.props;
@@ -36,7 +43,7 @@ class Spinner extends React.Component {
     }
     return (
       <div style={divStyle}>
-        <img style={imgStyle} src={gif} />
+        <img style={imgStyle} alt="spinner" src={gif} />
       </div>
     );
   }
