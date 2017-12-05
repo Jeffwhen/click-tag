@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Image, Rect, Group} from 'react-konva';
+import {Image, Group} from 'react-konva';
 import url from 'url';
 
-const strokeWidth = 2;
 class BackImage extends React.Component {
   static propTypes = {
     url: PropTypes.string.isRequired,
@@ -51,7 +50,7 @@ class BackImage extends React.Component {
     image.onload = () => this.setState({image});
   }
   render() {
-    const {canvasWidth, canvasHeight, box, scale, scaleBox} = this.props;
+    const {canvasWidth, canvasHeight, scaleBox} = this.props;
 
     let imgProps = {
       x: canvasWidth * scaleBox.x,
@@ -59,18 +58,9 @@ class BackImage extends React.Component {
       width: canvasWidth * scaleBox.w,
       height: canvasHeight * scaleBox.h
     };
-    let rectProps = {
-      x: box.x * canvasWidth,
-      y: box.y * canvasHeight,
-      width: box.w * canvasWidth,
-      height: box.h * canvasHeight,
-      stroke: 'red',
-      strokeWidth: strokeWidth / scale
-    };
     return (
       <Group>
         <Image image={this.state.image} {...imgProps} />
-        {/* <Rect {...rectProps}/> */}
       </Group>
     );
   }

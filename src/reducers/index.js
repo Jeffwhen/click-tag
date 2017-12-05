@@ -103,7 +103,8 @@ const ui = combineReducers({stage, scaleBox});
 const errorMessage = (state=null, action) => {
   const {type, error, level} = action;
 
-  if (type === ActionTypes.RESET_ERROR_MESSAGE) {
+  if (type === ActionTypes.RESET_ERROR_MESSAGE ||
+      type === ActionTypes.IMAGE_SUCCESS) {
     return null;
   } else if (error) {
     return {error, level};
