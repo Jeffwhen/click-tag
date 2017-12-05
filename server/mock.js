@@ -77,7 +77,7 @@ let data = [
     imgId: '12154945112431057327',
     width: 1600,
     height: 1200 },
-  { url: 'http://img.adkalava.com/img006/178/10475a032ff8ddf2.jpg',
+  { url: 'http://img.adkalava.com/img006/327/a8af0a2e1ad2d9af.jpg',
     box: 
          { xmax: 0.46590549998359,
            uid: 8286803,

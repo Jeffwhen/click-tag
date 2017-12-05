@@ -8,7 +8,7 @@ const headers = {
   'Content-Type': 'application/json; charset=utf-8'
 };
 
-const Endpoint = '/image';
+const Endpoint = window.location.href.split('#')[0];
 const ExtraParams = {};
 const postApi = (params, schema) => {
   params = JSON.stringify(Object.assign(params, ExtraParams));
@@ -39,7 +39,7 @@ const pointSchema = new schema.Entity('points', {}, {
 });
 
 const imageSchema = new schema.Entity('images', {points: [pointSchema]}, {
-  idAttribute: img => img.imgId,
+  idAttribute: img => `${img.imgId}-${img.index}`,
   processStrategy: entity => {
     let {box} = entity;
     let {uid} = box;
@@ -97,7 +97,7 @@ export default store => next => action => {
   return postApi(params, schema).then(
     response => next(actionWith({response, type: successType})),
     error => next(actionWith({
-      type: failureType, error: error.msg || 'Something bad happened',
+      type: failureType, error: error.errmsg || 'Something bad happened',
       level: error.errcode > 0 ? 'info' : 'error'
     }))
   );

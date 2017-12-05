@@ -15,12 +15,19 @@ class Point extends React.Component {
   }
   render() {
     let {name, ikey, selected} = this.props;
+    let activeStyle = {
+      borderColor: '#0366a6',
+      boxShadow: '0 0 2px 1px'
+    };
+    let props = {
+      style: selected ? activeStyle : null,
+      onClick: this.handleClick.bind(this, ikey)
+    };
+    let divProps = {
+      style: {margin: '6px 0'}
+    };
     return (
-      <div>
-        <button onClick={this.handleClick.bind(this, ikey)}>
-          {name}
-        </button>{selected ? '*' : null}
-      </div>
+      <div {...divProps}><button {...props}>{name}</button></div>
     );
   }
 }

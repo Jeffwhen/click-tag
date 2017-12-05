@@ -120,12 +120,14 @@ const point = (state=defaultPaginate, action) => {
     let imgId = action.response.result;
     let image = action.response.entities.images[imgId];
     let pointEntries = action.response.entities.points;
-    let point = image.points.map(
+    let points = image.points.map(
       ikey => pointEntries[ikey]
-    ).find(p => !p.x);
+    );
+    let point = points.find(p => !p.x);
     let id = point ? point.ikey : image.points[0].id;
     let total = image.points.length;
-    return {...state, index: 0, id, total, isFetching: false};
+    let index = points.indexOf(point);
+    return {...state, index, id, total, isFetching: false};
   } else if (action.type === ActionTypes.IMAGE_REQUEST) {
     return {...state, isFetching: true};
   }

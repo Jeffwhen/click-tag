@@ -16,7 +16,7 @@ const mapStateToProps = (state, ownProps) => {
   let points = image.points.map(
     p => state.entities.points[p]
   ).filter(
-    p => p.x
+    p => p.x >= 0
   );
   let scaleBox = state.ui.scaleBox;
   let scale = 1 / scaleBox.w;

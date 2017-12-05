@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Provider} from 'react-redux';
 import DevTools from './DevTools';
-import App from './App';
 import {Route, Redirect, Switch} from 'react-router-dom';
+import App from './App';
 
 const Root = ({store}) => (
   <Provider store={store}>

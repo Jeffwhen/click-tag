@@ -50,6 +50,7 @@ export const selPoint = index => {
     let image = state.entities.images[imgId];
 
     if (typeof index === 'number') {
+      index = index % image.points.length;
       index = image.points[index];
       if (!index) throw new Error('invalid point index');
     }
@@ -66,9 +67,26 @@ export const selPoint = index => {
   };
 };
 export const UPDATE_POINT = 'UPDATE_POINT';
-export const setPoint = ({ikey, x, y}) => ({
+const updatePoint = ({ikey, x, y}) => ({
   type: UPDATE_POINT,
   response: {entities: {points: {
     [ikey]: {x, y}
   }}}
 });
+export const setPoint = ({ikey, x, y}) => {
+  return (dispatch, getState) => {
+    let state = getState();
+
+    var imgId = state.pagination.image.id;
+    if (!imgId) throw new Error('invalid imgId');
+    let image = state.entities.images[imgId];
+
+    if (typeof ikey === 'number') {
+      ikey = ikey % image.points.length;
+      ikey = image.points[ikey];
+      if (!ikey) throw new Error('invalid point ikey');
+    }
+    console.log(ikey);
+    dispatch(updatePoint({ikey, x, y}));
+  };
+};

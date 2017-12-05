@@ -39,12 +39,10 @@ class BackImage extends React.Component {
     return url.format(obj);
   }
   componentWillReceiveProps(nextProps) {
-    if (nextProps.url !== this.props.url) {
-      const image = new window.Image();
-      const {url, scaleBox} = nextProps;
-      image.src = this.genURL(url, scaleBox);
-      image.onload = () => this.setState({image});
-    }
+    const image = new window.Image();
+    const {url, scaleBox} = nextProps;
+    image.src = this.genURL(url, scaleBox);
+    image.onload = () => this.setState({image});
   }
   componentDidMount() {
     const image = new window.Image();
@@ -72,7 +70,7 @@ class BackImage extends React.Component {
     return (
       <Group>
         <Image image={this.state.image} {...imgProps} />
-        <Rect {...rectProps}/>
+        {/* <Rect {...rectProps}/> */}
       </Group>
     );
   }
